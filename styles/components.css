@@ -1,0 +1,270 @@
+/* ===== БАЗОВЫЙ КОНТЕЙНЕР ВИДЖЕТА ===== */
+.widget {
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #203127, #17231c);
+  box-shadow: 0 12px 30px #00000018;
+  min-width: 0;
+}
+
+/* ===== ШАПКА ВИДЖЕТА ===== */
+.widget-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 17px;
+  border-bottom: 1px solid #ffffff0e;
+  background: #ffffff04;
+}
+
+.widget-header h3 {
+  font: 500 19px 'tolkiencyr', serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.widget-actions {
+  display: flex;
+  gap: 5px;
+}
+
+/* ===== ИКОНКИ-КНОПКИ (свернуть / закрыть) ===== */
+.icon-button {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #465b4a;
+  border-radius: 8px;
+  background: #24352a;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.icon-button:hover {
+  background: #3b4d3e;
+}
+
+.close-button:hover {
+  color: #ffc0b5;
+  border-color: #a66f66;
+}
+
+/* ===== ТЕЛО ВИДЖЕТА ===== */
+.widget-body {
+  padding: 18px;
+  min-width: 0;
+}
+
+.is-minimized .widget-body {
+  display: none;
+}
+
+/* ===== СООБЩЕНИЯ: загрузка / ошибка / пустое ===== */
+.widget-message {
+  font-size: 13px;
+  line-height: 1.65;
+  padding: 12px;
+  border-radius: 9px;
+  background: #ffffff06;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.widget-message.loading {
+  color: var(--gold);
+}
+
+.widget-message.error {
+  color: #ffc0b5;
+  background: #6a302c26;
+  border: 1px solid #a85e5633;
+}
+
+/* ===== КОНТЕЙНЕР ДЛЯ РЕЗУЛЬТАТОВ API ===== */
+.api-result {
+  margin: 14px 0;
+  min-height: 55px;
+}
+
+/* ===== КАРТОЧКА ПЕРСОНАЖА ===== */
+.character-card {
+  padding: 16px;
+  border-radius: 11px;
+  background: radial-gradient(ellipse at top right, #5a714b44, transparent 70%), #101a13;
+  border: 1px solid #ffffff0d;
+}
+
+.character-card h4 {
+  font: 500 24px 'Montserrat', serif;
+  color: var(--gold);
+  margin-bottom: 15px;
+}
+
+.character-card p {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 7px 0;
+  overflow-wrap: anywhere;
+}
+
+.character-card strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ===== ЦИТАТА ===== */
+blockquote {
+  margin: 0;
+  padding: 15px 16px;
+  border-left: 2px solid var(--gold);
+  background: #101a13;
+  border-radius: 0 9px 9px 0;
+  font: italic 19px/1.6 'Montserrat', serif;
+  color: #f1e8d3;
+  overflow-wrap: anywhere;
+}
+
+.quote-attribution {
+  text-align: right;
+  color: var(--gold);
+  font-size: 12px;
+  margin: 12px 2px 0;
+}
+
+/* ===== ЗАДАЧИ (TODO) ===== */
+.todo-form {
+  display: flex;
+  gap: 8px;
+}
+
+.todo-form input {
+  min-width: 0;
+  flex: 1;
+  background: #101a13;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 11px;
+  color: var(--text);
+  font-size: 12px;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0 0;
+  display: grid;
+  gap: 8px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #ffffff0c;
+  border-radius: 9px;
+  background: #ffffff04;
+  min-width: 0;
+}
+
+.todo-item input {
+  accent-color: var(--gold);
+  flex-shrink: 0;
+}
+
+.todo-item span {
+  flex: 1;
+  min-width: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.todo-item.is-done span {
+  text-decoration: line-through;
+  color: #849185;
+}
+
+.remove-task {
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+}
+
+.empty-note {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+  padding: 12px;
+  border: 1px dashed #435447;
+  border-radius: 8px;
+}
+
+/* ===== АДАПТИВ ДЛЯ ЗАДАЧ ===== */
+@media (max-width: 420px) {
+  .todo-form {
+    flex-direction: column;
+  }
+  .todo-form .button {
+    align-self: flex-start;
+  }
+}
+
+/* ===== КНИЖНАЯ ПОЛКА ===== */
+.book-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.book-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 14px;
+  border: 1px solid #ffffff10;
+  border-radius: 10px;
+  background: linear-gradient(120deg, #101a13, #1c2b20);
+}
+
+.book-number {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 42px;
+  border: 1px solid #9b895344;
+  border-radius: 7px;
+  color: var(--gold);
+  font: 500 14px 'Montserrat', serif;
+}
+
+.book-details {
+  min-width: 0;
+}
+
+.book-details h4 {
+  font: 500 17px/1.4 'Montserrat', serif;
+  color: var(--gold);
+  margin: 0 0 5px;
+  overflow-wrap: anywhere;
+}
+
+.book-details p {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0;
+}
+/* ===== ДОПОЛНИТЕЛЬНЫЕ ВНЕШНИЕ API ===== */
+.external-widget .api-result { min-height: 125px; }
+.external-widget .widget-message { margin: 0; }
+.external-widget .character-card h4 { font-size: 20px; }
+.external-widget .button { margin-top: 2px; }

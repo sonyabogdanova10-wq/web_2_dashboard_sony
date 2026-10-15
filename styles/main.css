@@ -1,0 +1,358 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@font-face {
+  font-family: 'tolkiencyr'; 
+  src: url('../assets/fonts/tolkiencyr.ttf') format('truetype');
+  font-weight: 400;                 
+  font-style: normal;
+  font-display: swap;             
+}
+
+:root {
+  color-scheme: dark;
+  --bg: #111a15;
+  --panel: #1a2820;
+  --panel2: #202f26;
+  --line: #35483b;
+  --text: #f2eee2;
+  --muted: #aeb9ac;
+  --gold: #d6b875;
+  --green: #a9c6a5;
+  --red: #e39b91;
+}
+
+* { box-sizing: border-box }
+
+body {
+  margin: 0;
+  background: radial-gradient(ellipse at 50% 0%, #263b2d 0, transparent 48%), var(--bg);
+  color: var(--text);
+  font-family: 'Montserrat';
+  min-height: 100vh;
+}
+
+button, input { font: inherit }
+
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.muted { color: var(--muted); font-size: 13px }
+
+.page {
+  max-width: 1240px;
+  margin: 2rem auto;
+  padding: 0 clamp(18px, 5vw, 64px);
+}
+
+
+/* ===== ПРИВЕТСТВИЕ ПОД HERO ===== */
+.welcome-note {
+  margin-top: 12px;
+  margin-bottom: 34px;
+  padding: 24px clamp(20px, 4vw, 38px);
+  border: 1px solid #9b895344;
+  border-radius: 16px;
+  background: linear-gradient(120deg, #1a2820ee, #17231cdd);
+}
+.welcome-note h2,
+.extra-archives .dashboard-heading h2 {
+  font: 500 clamp(23px, 3vw, 30px)/1.25 'tolkiencyr', serif;
+  color: var(--gold);
+  margin: 9px 0 12px;
+}
+.welcome-note h2 { text-align: center; }
+.welcome-note > .eyebrow { text-align: center; }
+.welcome-note p:not(.eyebrow) {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+.welcome-note a,
+.external-widget a {
+  color: var(--green);
+  text-underline-offset: 3px;
+}
+.welcome-note a:hover,
+.external-widget a:hover { color: var(--gold); }
+
+.extra-archives {
+  margin-top: 58px;
+  padding-top: 8px;
+}
+.extra-archives .dashboard-heading {
+  margin-top: 0;
+}
+.extra-archives .dashboard-heading h2 { margin-bottom: 0; }
+.external-widget .widget-body { min-height: 245px; }
+.external-widget .small { margin: 14px 0 0; line-height: 1.6; }
+.text-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 12px;
+}
+/* ===== HERO С ВИДЕО-ФОНОМ ===== */
+.hero {
+  position: relative;
+  height: 360px;
+  min-height: 360px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero__video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 45%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero__vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 70% 80% at 50% 50%,
+    transparent 40%,
+    rgba(17, 26, 21, 0.5) 65%,
+    var(--bg) 100%
+  );
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 24px;
+  padding-bottom: 12px;
+  text-align: center;
+}
+.hero__content h1,
+.hero__content p { text-align: center; }
+.hero__content h1 { margin: 12px 0; }
+.hero-ornament { margin-top: 16px; }
+
+.hero__content .eyebrow,
+.hero__content h1,
+.hero__content .hero-copy,
+.hero__content .hero-ornament {
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+/* ================================= */
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: .22em;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+h1, h2, h3, h4, p { 
+    margin-top: 0;
+}
+
+h1 {
+  font: 500 clamp(42px, 7vw, 76px)/1.04 'tolkiencyr', serif;
+  margin: 18px 0;
+}
+h1 em { 
+    color: var(--gold) 
+}
+
+.hero-copy {
+  max-width: 560px;
+  margin: 0 auto;
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.hero-ornament {
+  margin-top: 28px;
+  color: #9a8a5f;
+  letter-spacing: .25em;
+  font-size: 13px;
+}
+
+.control-panel {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #19271fdd;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px 24px;
+  align-items: center;
+}
+
+.control-panel h2,
+.dashboard-heading h2 {
+  font: 500 25px 'tolkiencyr', serif;
+  letter-spacing: 2px;
+  margin-bottom: 7px;
+}
+
+.control-panel .muted { margin-bottom: 0 }
+
+.add-controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.button {
+  border: 1px solid #526858;
+  background: #26372c;
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, transform .2s;
+  font-size: 13px;
+}
+.button:hover {
+  background: #344b3a;
+  border-color: #8b9f89;
+  transform: translateY(-1px);
+}
+
+.button-primary {
+  background: #d6b875;
+  color: #172018;
+  border-color: #d6b875;
+  font-weight: 400;
+}
+.button-primary:hover {
+  background: #e6cc91;
+  border-color: #e6cc91;
+}
+
+button:disabled {
+  opacity: .55;
+  cursor: wait;
+  transform: none;
+}
+
+.token-settings {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+.token-settings summary {
+  cursor: pointer;
+  color: var(--green);
+  font-size: 13px;
+}
+
+.token-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+.token-row label { font-size: 12px; color: var(--muted) }
+.token-row input {
+  flex: 1;
+  min-width: 180px;
+  background: #101a13;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--text);
+  padding: 11px;
+}
+
+.small { font-size: 11px; line-height: 1.6 }
+.status-success { color: var(--green) }
+.status-error { color: var(--red) }
+
+.dashboard-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+  margin: 46px 0 18px;
+}
+.dashboard-heading h2 { margin-bottom: 0 }
+
+#widget-count {
+  font: 500 13px 'DM Sans', sans-serif;
+  color: var(--gold);
+  border: 1px solid var(--line);
+  border-radius: 50px;
+  padding: 4px 9px;
+  vertical-align: middle;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+.footer {
+  text-align: center;
+  padding: 52px 0 28px;
+  color: var(--gold);
+  font-size: 13px;
+}
+.footer p {
+  margin: 9px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* ===== АДАПТИВ + ОТКЛ ВИДЕО НА ТЕЛЕФОНАХ ===== */
+@media (max-width: 760px) {
+  .topbar { height: 64px }
+  .top-note { display: none }
+  .hero {
+    height: 300px;
+    min-height: 300px;
+    padding: 0;
+  }
+  .hero__content {
+    padding-top: 22px;
+    padding-bottom: 10px;
+  }
+  .hero__content.page { margin: 0 auto; }
+  .hero__content h1 { font-size: clamp(34px, 9vw, 48px); }
+  .hero-copy { font-size: 13px; padding: 0 8px; }
+  .control-panel {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+  .add-controls { justify-content: flex-start }
+  .dashboard-heading {
+    align-items: start;
+    flex-direction: column;
+    margin-top: 34px;
+  }
+
+  /* ОТКЛ ВИДЕО */
+  .hero__video { display: none }
+  .hero {
+    background: radial-gradient(ellipse at 50% 30%, #263b2d 0%, var(--bg) 70%);
+  }
+  .hero__vignette { display: none }
+}

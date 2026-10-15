@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>А́рда</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/components.css">
+</head>
+<body>
+
+  <!-- ===== HERO С ВИДЕО-ФОНОМ ===== -->
+  <section class="hero">
+
+    <!-- ВИДЕО на всю ширину экрана -->
+    <video
+      class="hero__video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+    >
+      <source src="assets/video/LOTR_compressed.mp4" type="video/mp4">
+    </video>
+
+    <!--  ВИНЬЕТКА -->
+    <div class="hero__vignette" aria-hidden="true"></div>
+
+    <!-- КОНТЕНТ  -->
+    <div class="page hero__content">
+      <p class="eyebrow">ХРАНИЛИЩЕ ДРЕВНИХ ЗНАНИЙ</p>
+      <h1>Добро пожаловать<em><br>в Средиземье</em></h1>
+      <p class="hero-copy">
+        Собирай сведения о героях, открывай цитаты и книги, изучай кинохроники и главы, веди журнал путешественника!
+      </p>
+      <p class="hero-ornament">✧ ───── ◈ ───── ✧</p>
+    </div>
+
+  </section>
+
+  <!-- ===== ПРИВЕТСТВИЕ И ИНСТРУКЦИЯ ===== -->
+  <section class="page welcome-note" aria-labelledby="welcome-title">
+    <p class="eyebrow">ПИСЬМО ХРАНИТЕЛЯМ</p>
+    <h2 id="welcome-title">Доброго времени суток!</h2>
+    <p>Я Богданова Софья из группы 5-МВ-4, и так получилось, что многие API были мне недоступны, поэтому я от отчаяния взяла LOTR, т.к. он работал....</p>
+    <p>Я заметила, что задание (формулировка) немного изменилось (кажется), поэтому проект в целом может выглядеть странно, т.к. совмещает и старые, и новые требования, вот...
+      И за это прошу прощения! Ключ можно получить, указав почту тут: https://the-one-api.dev/ | там сразу же дадут его :] На всякий случай моя почта для связи : testo31390@gmail.com (могу отправить свой ключ или просто исправить что-то в работе, если понадобиться, вот). 
+      <a href="https://the-one-api.dev/documentation" target="_blank" rel="noopener noreferrer">Официальная документация The One API</a>.</p>
+    <p class="small muted">[ Токен действует до перезагрузки страницы ]</p>
+  </section>
+
+  <!-- ===== ПАНЕЛЬ УПРАВЛЕНИЯ ===== -->
+  <main class="page">
+
+    <section class="control-panel">
+      <div>
+        <h2>ПАНЕЛЬ УПРАВЛЕНИЯ</h2>
+        <p class="muted">Настрой своё хранилище. Добавляй или удаляй карточки по мере необходимости :]</p>
+      </div>
+      <div class="add-controls">
+        <button class="button" id="add-character" type="button">＋ Герои Средиземья</button>
+        <button class="button" id="add-quote" type="button">＋ Цитаты</button>
+        <button class="button" id="add-todo" type="button">＋ Заметки</button>
+        <button class="button" id="add-books" type="button">＋ Книжная полка</button>
+        <button class="button" id="add-movies" type="button">＋ Кинохроника</button>
+        <button class="button" id="add-chapters" type="button">＋ Хроники и главы</button>
+      </div>
+
+      <details class="token-settings">
+        <summary>Настроить доступ к The One API</summary>
+        <div class="token-row">
+          <label for="api-token">Токен API</label>
+          <input type="password" id="api-token" placeholder="Вставьте токен из личного кабинета">
+          <button class="button button-primary" id="save-token" type="button">Применить</button>
+        </div>
+        <p class="small muted" style="margin-top:10px">
+          Токен хранится только в памяти открытой страницы и не записывается в файлы. После перезагрузки его нужно ввести снова.
+        </p>
+        <p class="small" id="token-status" style="margin-top:8px">Токен не введён.</p>
+      </details>
+    </section>
+
+    <!-- ===== ДАШБОРД С ВИДЖЕТАМИ ===== -->
+    <section class="dashboard-heading">
+      <h2>МОЯ КОЛЛЕКЦИЯ <span id="widget-count">0</span></h2>
+      <p class="muted">Изучай А́рду</p>
+    </section>
+
+    <div class="dashboard-grid" id="dashboard"></div>
+
+    <!-- ===== ДОПОЛНИТЕЛЬНЫЕ API БЕЗ КЛЮЧА ===== -->
+    <section class="extra-archives" aria-labelledby="extra-archives-title">
+      <div class="dashboard-heading">
+        <div>
+          <p class="eyebrow">ЗА ПРЕДЕЛАМИ СРЕДИЗЕМЬЯ</p>
+          <h2 id="extra-archives-title">Другие миры и книжные архивы</h2>
+        </div>
+        <p class="muted">Два источника без API-ключа</p>
+      </div>
+      <div class="dashboard-grid extra-grid">
+        <article class="widget external-widget" id="potter-archive">
+          <header class="widget-header">
+            <h3>Магический архив</h3>
+          </header>
+          <div class="widget-body">
+            <p class="muted">Случайный персонаж из мира Гарри Поттера.</p>
+            <div class="api-result" id="potter-result" aria-live="polite">
+              <p class="widget-message loading">Открываем магические каталоги…</p>
+            </div>
+            <button class="button button-primary" id="potter-refresh" type="button">Найти персонажа</button>
+            <p class="small muted">Источник: <a href="https://docs.potterdb.com/apis/rest" target="_blank" rel="noopener noreferrer">Potter DB API</a>. Ключ не требуется.</p>
+          </div>
+        </article>
+
+        <article class="widget external-widget" id="book-archive">
+          <header class="widget-header">
+            <h3>Библиотека других миров</h3>
+          </header>
+          <div class="widget-body">
+            <p class="muted">Книги и авторы из открытого каталога Open Library.</p>
+            <div class="api-result" id="openlibrary-result" aria-live="polite">
+              <p class="widget-message loading">Перелистываем библиотечные каталоги…</p>
+            </div>
+            <button class="button button-primary" id="openlibrary-refresh" type="button">Найти книгу</button>
+            <p class="small muted">Источник: <a href="https://openlibrary.org/developers/api" target="_blank" rel="noopener noreferrer">Open Library API</a>. Ключ не требуется.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== ПОДВАЛ ===== -->
+  <footer class="footer">
+    <p>✦ Богданова Софья. ПР №2 ✦</p>
+    <p>Все права на персонажей, сеттинг и оригинальный сюжет принадлежат J.R.R. Tolkien Estate и правообладателям. <br> Данный материал создан исключительно в некоммерческих (развлекательных) целях.</p>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
